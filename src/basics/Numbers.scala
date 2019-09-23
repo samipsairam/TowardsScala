@@ -139,6 +139,47 @@ object Numbers extends App{
   if we need a very large integer or decimal numbers
    */
   // use scala BigInt or BigDecimal classes
+  var largeNum1 = BigInt(1878945698)
+  println(s"The number $largeNum1 is of type ${largeNum1.getClass.getName}")
+  println(largeNum1.isValidInt)
+  println(if(largeNum1.isValidLong) largeNum1.toLong)
+  var largeDecimal1: BigDecimal = 123456.789
+  println(s"The number $largeDecimal1 is of type ${largeDecimal1.getClass.getName}")
+  println(largeDecimal1 + largeDecimal1)
+  println(largeDecimal1.isValidInt)
+  println(largeDecimal1.toDouble)
+  println(if(largeDecimal1.isValidInt) largeDecimal1.toInt else largeDecimal1.toLong)
+  // maximum value check
+  println(s"The min value of Byte is ${Byte.MinValue} & the max value is ${Byte.MaxValue}")
+  println(s"The min value of Short is ${Short.MinValue} & the max value is ${Short.MaxValue}")
+  println(s"The min value of Int is ${Int.MinValue} & the max value is ${Int.MaxValue}")
+  println(s"The min value of Long is ${Long.MinValue} & the max value is ${Long.MaxValue}")
+  println(s"The min value of Float is ${Float.MinValue} & the max value is ${Float.MaxValue}")
+  println(s"The min value of Double is ${Double.MinValue} & the max value is ${Double.MaxValue}")
+  // using +ve infinity and -ve infinity
+  println(s"${Double.NegativeInfinity}")
+  println(s"${Double.PositiveInfinity}")
+  println(Double.MaxValue > Double.PositiveInfinity)
+
+  /*
+  GENERATING RANDOM NUMBERS
+  creating random numbers, such as when testing an application, performing a simulation, and many situations
+   */
+  // generating random numbers with "scala.util.Random" class
+  val rand1 = scala.util.Random
+  println(rand1.getClass.getName)
+  println(rand1.nextInt)
+  // limiting the random numbers to a maximum value
+  println(rand1.nextInt(100))         // returns number between (0 inclusive and 100 exclusive] so 0-99
+  // creating random float numbers
+  println(rand1.nextFloat())          // generates random float number between 0.0 and 1.0
+  // creating random double numbers
+  println(rand1.nextDouble())         // same value as above
+  // we can seed value using and Int or Long while creating Random object
+  val randomInt = new scala.util.Random(10)    // (0 - 10]
+  println(randomInt.nextInt())
+
+
 }
 
 object MathUtils {
