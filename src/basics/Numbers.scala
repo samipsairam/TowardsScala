@@ -176,9 +176,66 @@ object Numbers extends App{
   // creating random double numbers
   println(rand1.nextDouble())         // same value as above
   // we can seed value using and Int or Long while creating Random object
-  val randomInt = new scala.util.Random(10)    // (0 - 10]
-  println(randomInt.nextInt())
+  val ri = new scala.util.Random(100)    // (0 - 100]
+  println(ri.nextInt())
+  // seeding Random object after it is created
+  ri.setSeed(1000L)
+  println(ri.nextInt())
+  // creating Random characters
+  val randChar = new scala.util.Random()
+  println(randChar.nextPrintableChar())
+  // creating a random-length range of numbers which is useful for testing
+  // create a random length range
+  val range1 = 0 to ri.nextInt(10)
+  range1.foreach(println)
+  val range2 = 0 to ri.nextInt(10)
+  range2.foreach(print)
 
+  /*
+  CREATING A RANGE, LIST, OR ARRAY OF NUMBERS
+   */
+  // creating a Range with "to" method of the Int class elements
+  val rInt1 = 1 to 10
+  println(rInt1.getClass.getName)
+  rInt1.foreach(print)
+  println()
+  // using "by" method we can create a step
+  val rInt2 = 1 to 10 by 2
+  rInt2.foreach(print)
+  println()
+  // ranges are commonly used in for loops
+  for(x <- 0 to 5) println(x)         // to and until method is using ".to" and ".until" in the background
+  // we can also use "until" method instead of "to"
+  for(x <-50 until 60 by 2) if(x % 5 == 0) println(x)
+  val rangeToVector = for(i <- 2 to 5) yield i*i
+  println(rangeToVector.getClass.getName)
+  rangeToVector.foreach(println)
+  // Range can be easily converted to other data types like array or lists
+  val rangeToArray = (98 to 100).toArray
+  rangeToArray.foreach(println)
+  val rangeToList = (3 to 5).toList
+  rangeToList.foreach(println)
+  // range of Random numbers
+  val randRange = 100 to scala.util.Random.nextInt(105)
+
+  /*
+  FORMATTING NUMBERS AND CURRENCY
+   */
+  // basic number formatting
+  val PI = scala.math.Pi
+  println(s"Default value of PI: $PI")
+  println(f"After formatting value of PI: $PI%1.5f")
+  println(f"Formatting PI value to three significant digits: $PI%1.2f")
+  println(f"Ensuring data is properly formatted to 5 digits: $PI%07.3f")
+  // getting commas in your numbers when Int
+  val formatter1 = java.text.NumberFormat.getIntegerInstance()
+  println(formatter1.format(100000000))
+  // getting commas in your Double numbers
+  val formatter2 = java.text.NumberFormat.getInstance()
+  println(formatter2.format(10000000.366))
+  // handling currency output
+  val formatter3 = java.text.NumberFormat.getCurrencyInstance
+  println(formatter3.format(123123122.8953))
 
 }
 
